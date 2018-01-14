@@ -14,6 +14,6 @@ fun Context.toast(message: CharSequence,duration: Int=Toast.LENGTH_SHORT){
 fun Context.longToast(message: CharSequence){
     toast(message,Toast.LENGTH_LONG)
 }
-fun Context.log(tag: String=this.packageName,message: String){
+fun Context.log(message: String,tag: String=this.packageName){
         Log.d(tag,message)
 }
