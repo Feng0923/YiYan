@@ -4,28 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.administrator.yiyan.MainActivity">
-
+    tools:context="com.example.administrator.yiyan.MainActivity"
+    tools:layout_editor_absoluteY="81dp">
 
     <TextView
         android:id="@+id/tv_fresh"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
         android:text="立即刷新"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:textSize="18dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="53dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_fresh"
         tools:ignore="MissingConstraints">
 
         <EditText
@@ -33,14 +39,15 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="3"
-            android:hint="刷新间隔/分" />
+            android:hint="刷新间隔/分"
+            android:paddingLeft="5dp" />
 
         <Button
             android:id="@+id/btn_time"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             android:backgroundTint="@color/colorAccent"
-            android:text="生效"
-            android:layout_weight="1" />
+            android:text="生效" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
