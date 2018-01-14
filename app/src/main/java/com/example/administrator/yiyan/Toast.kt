@@ -10,3 +10,6 @@ import java.time.Duration
 fun Context.toast(message: CharSequence,duration: Int=Toast.LENGTH_SHORT){
     Toast.makeText(this, message, duration).show()
 }
+fun Context.longToast(message: CharSequence){
+    toast(message,Toast.LENGTH_LONG)
+}
