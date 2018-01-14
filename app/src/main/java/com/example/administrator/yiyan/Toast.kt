@@ -1,6 +1,7 @@
 package com.example.administrator.yiyan
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import java.time.Duration
 
@@ -12,4 +13,7 @@ fun Context.toast(message: CharSequence,duration: Int=Toast.LENGTH_SHORT){
 }
 fun Context.longToast(message: CharSequence){
     toast(message,Toast.LENGTH_LONG)
+}
+fun Context.log(tag: String=this.packageName,message: String){
+        Log.d(tag,message)
 }

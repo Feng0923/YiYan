@@ -11,6 +11,7 @@ import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
 import java.net.URL
+import kotlin.math.log
 
 
 /**
@@ -20,7 +21,6 @@ class mAppWidget : AppWidgetProvider() {
     var yiYan: String = ""
     override fun onReceive(context: Context?, intent: Intent?) {
         super.onReceive(context, intent)
-//        val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
         fresh(context)
     }
     private fun fresh(context: Context?) {
@@ -32,9 +32,9 @@ class mAppWidget : AppWidgetProvider() {
             val from = json.getString("from")
             uiThread {
                 val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
-                remote.setTextViewText(R.id.from,"----$from")
                 remote.setTextViewText(R.id.appwidget_text, content)
-                Log.d("asdfs", content+from)
+                remote.setTextViewText(R.id.from,"----$from")
+                context?.log("------")
                 val con = ComponentName(context, mAppWidget::class.java)
                 val appWidgetManager = AppWidgetManager.getInstance(context)
                 appWidgetManager.updateAppWidget(con, remote)
