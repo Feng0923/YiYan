@@ -24,7 +24,6 @@ class mAppWidget : AppWidgetProvider() {
         fresh(context)
     }
     private fun fresh(context: Context?) {
-
         doAsync {
             Log.d("cao","weishenme ")
             val data = URL("https://sslapi.hitokoto.cn/").readText()

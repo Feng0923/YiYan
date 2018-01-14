@@ -28,6 +28,7 @@ class mAppWidgetService : Service() {
         registerReceiver(mAppWidgetServiceReceiver, filter)
         alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
 
+
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
@@ -44,6 +45,9 @@ class mAppWidgetService : Service() {
         alarmManager.cancel(pendingIntent)
     }
 
+    /**
+     * state(record alarmManager's state) 0x11 : no task ; 0x12 : on task
+     */
     var state: Int = 0x11
     private fun startTask(millis: Long = 3 * 1000): Unit {
         val intent1 = Intent("android.appwidget.action.APPWIDGET_UPDATE")
