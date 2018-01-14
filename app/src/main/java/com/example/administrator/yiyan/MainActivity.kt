@@ -3,7 +3,6 @@ package com.example.administrator.yiyan
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_main.*
-import org.jetbrains.anko.attempt
 
 class MainActivity : AppCompatActivity() {
 
@@ -19,5 +18,6 @@ class MainActivity : AppCompatActivity() {
             val millis = et_time.text.toString().toLong()
             hideKeyboard();alarmUtils.setTime(millis)}
         tv_fresh.setOnClickListener { alarmUtils.update() ;toast("刷新成功")}
+
     }
 }
