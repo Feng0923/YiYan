@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.widget.RemoteViews
+import org.jetbrains.anko.attempt
 import org.jetbrains.anko.doAsync
 import org.jetbrains.anko.uiThread
 import org.json.JSONObject
@@ -30,6 +31,7 @@ class mAppWidget : AppWidgetProvider() {
             val json =JSONObject(data)
             val content = json.getString("hitokoto")
             val from = json.getString("from")
+
             uiThread {
                 val remote = RemoteViews(context?.packageName, R.layout.m_app_widget)
                 remote.setTextViewText(R.id.appwidget_text, content)

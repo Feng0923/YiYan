@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
     private fun init() {
         alarmUtils = AlarmUtils(this)
         btn_time.setOnClickListener{
-            val millis = et_time.text.toString().toLong();alarmUtils.setTime(millis)
-        }
+            val millis = et_time.text.toString().toLong()
+            hideKeyboard();alarmUtils.setTime(millis)}
         tv_fresh.setOnClickListener { alarmUtils.update() }
     }
 }
