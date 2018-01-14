@@ -10,38 +10,47 @@ import android.content.IntentFilter
 import android.os.IBinder
 import android.os.SystemClock
 import android.util.Log
+import android.view.View
+import android.widget.LinearLayout
+import android.widget.RemoteViews
 
 /**
  * Created by Administrator on 2018/1/14/014.
  */
 class mAppWidgetService : Service() {
+    val TAG = "mAppWidgerService"
     lateinit var alarmManager: AlarmManager
-
     override fun onBind(p0: Intent?): IBinder {
         TODO("asdfa")
     }
 
+    lateinit var intent: Intent
+    lateinit var pendingIntent: PendingIntent
     override fun onCreate() {
         super.onCreate()
         val filter = IntentFilter()
         filter.addAction("com.mAppWidgetServiceReceiver")
         registerReceiver(mAppWidgetServiceReceiver, filter)
         alarmManager = getSystemService(Context.ALARM_SERVICE) as android.app.AlarmManager
-
-
+        intent = Intent("android.appwidget.action.APPWIDGET_UPDATE")
+        intent?.setClass(applicationContext, mAppWidget::class.java)
+//        Log.d("asdasdfasd", "asdfasdf")
+        pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
+        val remote =  RemoteViews(applicationContext.packageName,R.layout.m_app_widget)
+        remote.setOnClickPendingIntent(R.id.appwidget_layout,pendingIntent)
+//        val view = View.inflate(applicationContext,R.layout.m_app_widget,null)
+//        val remote= view.findViewById<LinearLayout>(R.id.appwidget_layout)
+//        remote.setOnClickListener { sendBroadcast(intent);Log.d(TAG,"cao")}
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
         startTask()
         return super.onStartCommand(intent, flags, startId)
+
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        val intent1 = Intent("android.appwidget.action.APPWIDGET_UPDATE")
-        intent1?.setClass(applicationContext, mAppWidget::class.java)
-        Log.d("asdasdfasd", "asdfasdf")
-        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent1, 0)
         alarmManager.cancel(pendingIntent)
     }
 
@@ -50,10 +59,10 @@ class mAppWidgetService : Service() {
      */
     var state: Int = 0x11
     private fun startTask(millis: Long = 3 * 1000): Unit {
-        val intent1 = Intent("android.appwidget.action.APPWIDGET_UPDATE")
-        intent1?.setClass(applicationContext, mAppWidget::class.java)
-        Log.d("asdasdfasd", "asdfasdf")
-        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent1, 0)
+//        val intent1 = Intent("android.appwidget.action.APPWIDGET_UPDATE")
+//        intent1?.setClass(applicationContext, mAppWidget::class.java)
+//        Log.d("asdasdfasd", "asdfasdf")
+//        val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent1, 0)
         when (state) {
             0x12 -> {
                 alarmManager.cancel(pendingIntent);state = 0x11
