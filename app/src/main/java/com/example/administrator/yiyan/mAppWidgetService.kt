@@ -39,7 +39,6 @@ class mAppWidgetService : Service() {
         super.onDestroy()
         val intent1 = Intent("android.appwidget.action.APPWIDGET_UPDATE")
         intent1?.setClass(applicationContext, mAppWidget::class.java)
-//        intent?.putExtra("control",":update")
         Log.d("asdasdfasd", "asdfasdf")
         val pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent1, 0)
         alarmManager.cancel(pendingIntent)

@@ -1,6 +1,5 @@
 package com.example.administrator.yiyan
 
-import android.app.AlarmManager
 import android.content.Context
 import android.content.Intent
 
@@ -10,15 +9,17 @@ import android.content.Intent
 class AlarmUtils(var context: Context){
 
     fun setTime(millis: Long): Unit {
-        val intent = Intent()
-        intent.action = "com.mAppWidgetServiceReceiver"
-        intent.putExtra("Time",millis)
+        val intent = Intent().apply {
+            action = "com.mAppWidgetServiceReceiver"
+            putExtra("Time", millis)
+        }
         context.sendBroadcast(intent)
     }
     fun cancle(){
-        val intent = Intent()
-        intent.action = "com.mAppWidgetServiceReceiver"
-        intent.putExtra("Cancle",0x12)
+        val intent = Intent().apply {
+            action = "com.mAppWidgetServiceReceiver"
+            putExtra("Cancle",0x12)
+        }
         context.sendBroadcast(intent)
     }
 
