@@ -14,7 +14,6 @@ class MainActivity : AppCompatActivity() {
     }
     lateinit var alarmUtils: AlarmUtils
     private fun init() {
-//        attempt { toast() }
         alarmUtils = AlarmUtils(this)
         btn_time.setOnClickListener{
             val millis = et_time.text.toString().toLong();alarmUtils.setTime(millis)
