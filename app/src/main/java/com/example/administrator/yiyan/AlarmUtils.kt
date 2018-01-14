@@ -9,16 +9,18 @@ import android.content.Intent
 class AlarmUtils(var context: Context){
 
     fun setTime(millis: Long): Unit {
-        verifyTime(millis)
-        val intent = Intent().apply {
-            action = "com.mAppWidgetServiceReceiver"
-            putExtra("Time", millis)
+        if (verifyTime(millis)) {
+            val intent = Intent().apply {
+                action = "com.mAppWidgetServiceReceiver"
+                putExtra("Time", millis)
+            }
+            context.sendBroadcast(intent)
         }
-        context.sendBroadcast(intent)
     }
 
-    private fun verifyTime(millis: Long) {
-        if (millis==0L)context.toast("请输入合法时间间隔")else context.toast("success")
+    private fun verifyTime(millis: Long):Boolean {
+        if (millis==0L)context.toast("请输入合法时间间隔") else context.toast("设置成功");return true
+        return false
     }
 
     fun cancle(){

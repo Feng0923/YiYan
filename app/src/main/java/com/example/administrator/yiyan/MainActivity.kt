@@ -18,6 +18,6 @@ class MainActivity : AppCompatActivity() {
         btn_time.setOnClickListener{
             val millis = et_time.text.toString().toLong()
             hideKeyboard();alarmUtils.setTime(millis)}
-        tv_fresh.setOnClickListener { alarmUtils.update() }
+        tv_fresh.setOnClickListener { alarmUtils.update() ;toast("刷新成功")}
     }
 }
