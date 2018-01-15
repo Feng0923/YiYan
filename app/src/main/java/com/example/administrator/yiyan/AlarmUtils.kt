@@ -11,9 +11,11 @@ class AlarmUtils(var context: Context){
     fun setTime(millis: Long): Unit {
         if (verifyTime(millis)) {
             val intent = Intent().apply {
+                setClass(context,mAppWidgetService::class.java)
                 action = "com.mAppWidgetServiceReceiver"
                 putExtra("Time", millis)
             }
+            context.startService(intent)
             context.sendBroadcast(intent)
         }
     }

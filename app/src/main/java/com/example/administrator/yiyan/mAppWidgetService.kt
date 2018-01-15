@@ -38,9 +38,6 @@ class mAppWidgetService : Service() {
         pendingIntent = PendingIntent.getBroadcast(applicationContext, 0, intent, 0)
         val remote =  RemoteViews(applicationContext.packageName,R.layout.m_app_widget)
         remote.setOnClickPendingIntent(R.id.appwidget_layout,pendingIntent)
-//        val view = View.inflate(applicationContext,R.layout.m_app_widget,null)
-//        val remote= view.findViewById<LinearLayout>(R.id.appwidget_layout)
-//        remote.setOnClickListener { sendBroadcast(intent);Log.d(TAG,"cao")}
     }
 
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
